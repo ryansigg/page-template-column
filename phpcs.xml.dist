@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="Template Column">
+	<description>WordPress Coding Standards for the plugin code.</description>
+	<file>template-column.php</file>
+	<file>includes</file>
+	<arg name="extensions" value="php"/>
+	<arg value="sp"/>
+	<config name="minimum_supported_wp_version" value="6.4"/>
+	<config name="testVersion" value="7.4-"/>
+	<rule ref="WordPress"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="template-column"/>
+		</properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array" value="template_column,Template_Column"/>
+		</properties>
+	</rule>
+</ruleset>

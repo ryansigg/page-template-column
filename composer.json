@@ -1,0 +1,20 @@
+{
+    "name": "ryansigg/template-column",
+    "description": "WordPress plugin: a sortable, filterable Template column for pages, posts and custom post types.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "lint": "phpcs"
+    }
+}
