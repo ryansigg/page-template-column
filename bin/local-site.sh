@@ -61,15 +61,15 @@ PHP
 
   wp config create --dbname=wp --dbuser=wp --dbpass=wp --skip-check --quiet
   wp config set DB_DIR "$SITE/data/" --quiet
-  wp core install --url="http://localhost:$PORT" --title="Template Column" \
+  wp core install --url="http://localhost:$PORT" --title="Page Template Column" \
     --admin_user=admin --admin_password=password --admin_email=admin@example.test --skip-email
   # WP-CLI can guess a URL that includes the web/ folder depending on where it runs; pin both.
   wp option update home "http://localhost:$PORT" --quiet
   wp option update siteurl "http://localhost:$PORT" --quiet
-  ln -s "$ROOT" "$SITE/web/wp-content/plugins/template-column"
-  ln -s "$ROOT/tests/fixtures/template-column-test-theme" "$SITE/web/wp-content/themes/template-column-test"
-  wp theme activate template-column-test
-  wp plugin activate template-column
+  ln -s "$ROOT" "$SITE/web/wp-content/plugins/page-template-column"
+  ln -s "$ROOT/tests/fixtures/page-template-column-test-theme" "$SITE/web/wp-content/themes/page-template-column-test"
+  wp theme activate page-template-column-test
+  wp plugin activate page-template-column
   wp rewrite structure '/%postname%/' --hard --quiet
   wp eval-file "$ROOT/bin/seed.php"
   rm -rf "$SITE/sqlite-src"

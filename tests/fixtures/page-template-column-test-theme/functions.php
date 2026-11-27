@@ -2,7 +2,7 @@
 /**
  * Test theme setup, plus the post types the tests list: Books (with templates) and Notes (without).
  *
- * @package Template_Column_Test
+ * @package Page_Template_Column_Test
  */
 
 add_action(

@@ -16,7 +16,7 @@ jobs:
           php-version: '8.3'
           tools: composer
       - name: Syntax check on PHP 8.3
-        run: find template-column.php includes bin tests -name '*.php' -print0 | xargs -0 -n1 php -l
+        run: find page-template-column.php includes bin tests -name '*.php' -print0 | xargs -0 -n1 php -l
       - run: composer install --no-interaction --no-progress
       - run: composer lint
 
@@ -53,8 +53,8 @@ jobs:
 
       - uses: actions/upload-artifact@v5
         with:
-          name: template-column-plugin
-          path: dist/template-column.zip
+          name: page-template-column-plugin
+          path: dist/page-template-column.zip
 
       - uses: actions/upload-artifact@v5
         if: failure()

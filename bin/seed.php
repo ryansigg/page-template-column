@@ -3,7 +3,7 @@
  * Seeds the test site: pages, posts and books with a spread of templates, including one
  * that points at a template the theme no longer has. Run with `wp eval-file bin/seed.php`.
  *
- * @package Template_Column
+ * @package Page_Template_Column
  */
 
 $items = array(

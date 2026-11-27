@@ -2,7 +2,7 @@
 /**
  * The Template column, its filter dropdown and its sorting.
  *
- * @package Template_Column
+ * @package Page_Template_Column
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * Everything is wired up per screen: on edit.php for the post type being listed, and on
  * the Quick Edit save request, which redraws a single row and needs the same columns.
  */
-final class Template_Column {
+final class Page_Template_Column {
 
 	/** Post meta WordPress uses to store the assigned template. */
 	const META_KEY = '_wp_page_template';
@@ -121,7 +121,7 @@ final class Template_Column {
 		 * @param bool   $enabled   Whether the column is shown.
 		 * @param string $post_type Post type being listed.
 		 */
-		return (bool) apply_filters( 'template_column_enabled', $enabled, $this->post_type );
+		return (bool) apply_filters( 'page_template_column_enabled', $enabled, $this->post_type );
 	}
 
 	/**
@@ -219,14 +219,14 @@ final class Template_Column {
 	 */
 	public function label( $slug ) {
 		if ( self::DEFAULT_TEMPLATE === $slug ) {
-			return __( 'Default template', 'template-column' );
+			return __( 'Default template', 'page-template-column' );
 		}
 		$templates = $this->templates();
 		if ( isset( $templates[ $slug ] ) ) {
 			return $templates[ $slug ];
 		}
 		/* translators: %s: template file or slug that is assigned but no longer exists. */
-		return sprintf( __( '%s (missing)', 'template-column' ), $slug );
+		return sprintf( __( '%s (missing)', 'page-template-column' ), $slug );
 	}
 
 	/**
@@ -236,7 +236,7 @@ final class Template_Column {
 	 * @return array<string, string>
 	 */
 	public function add_column( $columns ) {
-		$label  = __( 'Template', 'template-column' );
+		$label  = __( 'Template', 'page-template-column' );
 		$result = array();
 		foreach ( $columns as $key => $name ) {
 			$result[ $key ] = $name;
@@ -283,9 +283,9 @@ final class Template_Column {
 
 		if ( $this->is_missing( $slug ) ) {
 			printf(
-				'<a class="template-column-missing" href="%1$s" title="%2$s"><span class="dashicons dashicons-warning" aria-hidden="true"></span> %3$s</a>',
+				'<a class="page-template-column-missing" href="%1$s" title="%2$s"><span class="dashicons dashicons-warning" aria-hidden="true"></span> %3$s</a>',
 				esc_url( $url ),
-				esc_attr__( 'This template is assigned but the active theme no longer has it, so the default template is used.', 'template-column' ),
+				esc_attr__( 'This template is assigned but the active theme no longer has it, so the default template is used.', 'page-template-column' ),
 				esc_html( $this->label( $slug ) )
 			);
 			return;
@@ -293,7 +293,7 @@ final class Template_Column {
 
 		printf(
 			'<a class="%1$s" href="%2$s">%3$s</a>',
-			esc_attr( self::DEFAULT_TEMPLATE === $slug ? 'template-column-default' : 'template-column-name' ),
+			esc_attr( self::DEFAULT_TEMPLATE === $slug ? 'page-template-column-default' : 'page-template-column-name' ),
 			esc_url( $url ),
 			esc_html( $this->label( $slug ) )
 		);
@@ -321,16 +321,16 @@ final class Template_Column {
 			}
 		}
 
-		echo '<label class="screen-reader-text" for="template-column-filter">' . esc_html__( 'Filter by template', 'template-column' ) . '</label>';
-		echo '<select name="' . esc_attr( self::QUERY_VAR ) . '" id="template-column-filter">';
-		echo '<option value="">' . esc_html__( 'All templates', 'template-column' ) . '</option>';
+		echo '<label class="screen-reader-text" for="page-template-column-filter">' . esc_html__( 'Filter by template', 'page-template-column' ) . '</label>';
+		echo '<select name="' . esc_attr( self::QUERY_VAR ) . '" id="page-template-column-filter">';
+		echo '<option value="">' . esc_html__( 'All templates', 'page-template-column' ) . '</option>';
 		foreach ( $options as $slug => $label ) {
 			printf(
 				'<option value="%1$s"%2$s>%3$s</option>',
 				esc_attr( $slug ),
 				selected( $current, (string) $slug, false ),
 				/* translators: 1: template name, 2: number of posts using it. */
-				esc_html( sprintf( __( '%1$s (%2$s)', 'template-column' ), $label, number_format_i18n( $counts[ $slug ] ?? 0 ) ) )
+				esc_html( sprintf( __( '%1$s (%2$s)', 'page-template-column' ), $label, number_format_i18n( $counts[ $slug ] ?? 0 ) ) )
 			);
 		}
 		echo '</select>';
@@ -447,9 +447,9 @@ final class Template_Column {
 		wp_add_inline_style(
 			'list-tables',
 			'.fixed .column-template{width:15%}'
-			. '.column-template .template-column-default{color:#646970}'
-			. '.column-template .template-column-missing{color:#b32d2e}'
-			. '.column-template .template-column-missing .dashicons{font-size:16px;width:16px;height:16px;vertical-align:text-bottom}'
+			. '.column-template .page-template-column-default{color:#646970}'
+			. '.column-template .page-template-column-missing{color:#b32d2e}'
+			. '.column-template .page-template-column-missing .dashicons{font-size:16px;width:16px;height:16px;vertical-align:text-bottom}'
 		);
 	}
 }

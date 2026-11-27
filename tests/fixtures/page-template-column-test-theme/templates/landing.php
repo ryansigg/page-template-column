@@ -2,7 +2,7 @@
 /**
  * Template Name: Landing Page
  *
- * @package Template_Column_Test
+ * @package Page_Template_Column_Test
  */
 
 require __DIR__ . '/../index.php';

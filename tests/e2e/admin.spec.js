@@ -23,7 +23,7 @@ test.describe( 'Pages', () => {
 
 	test( 'flags a template the theme no longer has', async ( { page } ) => {
 		await page.goto( '/wp-admin/edit.php?post_type=page' );
-		const missing = cell( page, 'Old Promo' ).locator( 'a.template-column-missing' );
+		const missing = cell( page, 'Old Promo' ).locator( 'a.page-template-column-missing' );
 		await expect( missing ).toHaveText( 'templates/retired-promo.php (missing)' );
 		await expect( missing ).toHaveAttribute( 'title', /no longer has it/ );
 	} );
@@ -103,7 +103,7 @@ test.describe( 'Pages', () => {
 
 	test( 'has no accessibility violations in the column or the dropdown', async ( { page } ) => {
 		await page.goto( '/wp-admin/edit.php?post_type=page' );
-		const results = await new AxeBuilder( { page } ).include( '.column-template' ).include( '#template-column-filter' ).analyze();
+		const results = await new AxeBuilder( { page } ).include( '.column-template' ).include( '#page-template-column-filter' ).analyze();
 		expect( results.violations ).toEqual( [] );
 	} );
 } );
@@ -125,6 +125,6 @@ test.describe( 'Custom post types', () => {
 		await page.goto( '/wp-admin/edit.php?post_type=note' );
 		await expect( page.locator( '#the-list .row-title' ) ).toHaveText( [ 'A note' ] );
 		await expect( page.locator( 'th#template' ) ).toHaveCount( 0 );
-		await expect( page.locator( '#template-column-filter' ) ).toHaveCount( 0 );
+		await expect( page.locator( '#page-template-column-filter' ) ).toHaveCount( 0 );
 	} );
 } );

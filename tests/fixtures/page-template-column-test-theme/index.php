@@ -2,7 +2,7 @@
 /**
  * Fallback template for the test theme.
  *
- * @package Template_Column_Test
+ * @package Page_Template_Column_Test
  */
 
 get_header();

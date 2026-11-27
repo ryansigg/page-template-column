@@ -1,5 +1,5 @@
 {
-  "name": "template-column",
+  "name": "page-template-column",
   "version": "2.0.0",
   "description": "WordPress plugin: a sortable, filterable Template column for pages, posts and custom post types.",
   "private": true,
@@ -7,11 +7,11 @@
   "license": "GPL-2.0-or-later",
   "scripts": {
     "test:e2e": "playwright test",
-    "lint:php": "find template-column.php includes bin tests -name '*.php' -print0 | xargs -0 -n1 php -l",
+    "lint:php": "find page-template-column.php includes bin tests -name '*.php' -print0 | xargs -0 -n1 php -l",
     "site:setup": "bash bin/local-site.sh setup",
     "site:start": "bash bin/local-site.sh start",
     "site:stop": "bash bin/local-site.sh stop",
-    "zip": "mkdir -p dist && rm -f dist/template-column.zip && cd .. && zip -rq template-column/dist/template-column.zip template-column/template-column.php template-column/includes template-column/readme.txt template-column/LICENSE"
+    "zip": "mkdir -p dist && rm -f dist/page-template-column.zip && cd .. && zip -rq page-template-column/dist/page-template-column.zip page-template-column/page-template-column.php page-template-column/includes page-template-column/readme.txt page-template-column/LICENSE"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

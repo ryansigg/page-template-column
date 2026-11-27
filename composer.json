@@ -1,5 +1,5 @@
 {
-    "name": "ryansigg/template-column",
+    "name": "ryansigg/page-template-column",
     "description": "WordPress plugin: a sortable, filterable Template column for pages, posts and custom post types.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",

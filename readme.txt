@@ -1,4 +1,4 @@
-=== Template Column ===
+=== Page Template Column ===
 Contributors: ryansigg
 Tags: page template, admin columns, templates, custom post types
 Requires at least: 6.4
@@ -12,7 +12,7 @@ See which template every page, post and custom post type uses, right in the admi
 
 == Description ==
 
-Template Column adds a Template column to the admin list for any post type whose posts can use a template.
+Page Template Column adds a Template column to the admin list for any post type whose posts can use a template.
 
 * Shows the template's name ("Landing Page"), not its file name, or "Default template".
 * Click the column header to sort by template name. The default template sorts first.
@@ -28,9 +28,9 @@ No settings. Post types without any templates get no column.
 
 = How do I hide the column on one post type? =
 
-Use the `template_column_enabled` filter:
+Use the `page_template_column_enabled` filter:
 
-`add_filter( 'template_column_enabled', fn( $enabled, $post_type ) => 'post' === $post_type ? false : $enabled, 10, 2 );`
+`add_filter( 'page_template_column_enabled', fn( $enabled, $post_type ) => 'post' === $post_type ? false : $enabled, 10, 2 );`
 
 Each user can also hide it under Screen Options.
 

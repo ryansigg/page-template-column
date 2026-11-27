@@ -1,4 +1,4 @@
-# Template Column
+# Page Template Column
 
 A WordPress plugin that shows which template every page, post and custom post type uses, right in the admin list. Sort by it, filter by it, and spot templates that no longer exist.
 
@@ -19,7 +19,7 @@ Requires WordPress 6.4+ and PHP 7.4+.
 
 ## How it works
 
-Everything lives in [`includes/class-template-column.php`](includes/class-template-column.php).
+Everything lives in [`includes/class-page-template-column.php`](includes/class-page-template-column.php).
 
 - The plugin hooks `load-edit.php`, so it only does work on a post list screen, for the one post type being listed. Quick Edit's `inline-save` request gets the same hooks, since it redraws a single row outside that screen.
 - Template names come from `wp_get_theme()->get_page_templates( null, $post_type )`, which merges classic and block theme templates.
@@ -32,7 +32,7 @@ Everything lives in [`includes/class-template-column.php`](includes/class-templa
 To turn the column off for a post type:
 
 ```php
-add_filter( 'template_column_enabled', function ( $enabled, $post_type ) {
+add_filter( 'page_template_column_enabled', function ( $enabled, $post_type ) {
 	return 'post' === $post_type ? false : $enabled;
 }, 10, 2 );
 ```
@@ -49,7 +49,7 @@ npm run test:e2e
 npm run site:stop
 ```
 
-The test theme in [`tests/fixtures`](tests/fixtures/template-column-test-theme) has three templates, a Books post type that has templates and a Notes post type that doesn't. [`bin/seed.php`](bin/seed.php) adds pages, posts and books with a spread of templates, including one page assigned to a template that no longer exists.
+The test theme in [`tests/fixtures`](tests/fixtures/page-template-column-test-theme) has three templates, a Books post type that has templates and a Notes post type that doesn't. [`bin/seed.php`](bin/seed.php) adds pages, posts and books with a spread of templates, including one page assigned to a template that no longer exists.
 
 ### Tests
 
